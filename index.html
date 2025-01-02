@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="tic-tac-toe.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="tic-tac-toe">
+        <div id="info" class="info"><i class="fa-solid fa-info"></i></div>
+        <h2>Tic Tac Toe</h2>
+        <div class="game" id="game-board">
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+          <div class="cell" data-cell></div>
+        </div>
+        <div class="buttons">
+            <div class="switch-button" id="btn">
+                <label class="switch">
+                  <div class="toggle-button active" id="onePlayer"><i class="fa-solid fa-user"></i> 1 Player</div>
+                  <div class="toggle-button inactive" id="twoPlayer"><i class="fa-solid fa-user-group"></i> 2 Players</div>
+                </label>
+            </div>
+            <button class="reset" id="reset">Reset</button>
+        </div>
+        <div class="instructions">
+          <p id="instruction">Instructions</p>
+        </div>
+    </div>
+    <div class="info-section" id="info-section">
+        <div class="info-content">
+            <i id="close" class="fa-solid fa-circle-xmark"></i>
+            <h3 class="info-head">Tic-Tac-Toe Game Instructions</h3>
+            <ol>
+              <li><strong>Select the Game Mode:</strong>
+                <ul>
+                  <li>Click <b>"1 Player"</b> to play against the computer.</li>
+                  <li>Click <b>"2 Players"</b> to play with a friend.</li>
+                </ul>
+              </li>
+              <li><strong>Understand the Objective:</strong>
+                <ul>
+                  <li>Players take turns to mark an empty cell in a 3x3 grid.</li>
+                  <li>The first player to align three of their symbols (<b>X</b> or <b>O</b>) horizontally, vertically, or diagonally wins.</li>
+                  <li>If all cells are filled without any winning alignment, the game ends in a draw.</li>
+                </ul>
+              </li>
+              <li><strong>Start Playing:</strong>
+                <ul>
+                  <li>Player 1 (<b>X</b>) always starts the game.</li>
+                  <li>In <b>1 Player mode</b>, after you make your move, the computer (<b>O</b>) will play automatically.</li>
+                  <li>In <b>2 Players mode</b>, take turns clicking on the grid cells.</li>
+                </ul>
+              </li>
+              <li><strong>Winning or Drawing:</strong>
+                <ul>
+                  <li>If a player aligns three symbols, the game announces the winner in the <b>instructions</b> section.</li>
+                  <li>If the game ends in a draw, it will display "This Game is a draw."</li>
+                </ul>
+              </li>
+              <li><strong>Reset the Game:</strong>
+                <ul>
+                  <li>Click the <b>Reset</b> button to clear the board and start a new game.</li>
+                  <li>You can also switch between <b>1 Player</b> and <b>2 Players</b> modes by clicking the respective buttons.</li>
+                </ul>
+              </li>
+            </ol>
+            <p class="tips">Tips: In <b>1 Player mode</b>, the computer moves randomly, so strategize your moves to win! Focus on blocking your opponent's winning combinations while forming your own.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

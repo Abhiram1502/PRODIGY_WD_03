@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=SUSE:wght@100..800&display=swap');
+*{
+    margin: 0;
+    padding: 0px;
+}
+body{
+    margin: 0;
+    padding: 0px;
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: "SUSE", serif;
+    font-optical-sizing: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+:root{
+    --blue:#492061;
+    --white:#E3E2E3;
+    --smoke:#9C87AC;
+}
+.tic-tac-toe{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h2{
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+.game{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    column-gap: 20px;
+}
+.cell{
+    background-color: var(--smoke);
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 50px;
+    text-align: center;
+}
+.instructions{
+    background-color: var(--white);
+    width: 400px;
+    margin-top: 35px;
+    padding: 10px;
+    color: var(--blue);
+    text-align: center;
+}
+.buttons{
+    display: flex;
+    margin-top: 30px;
+}
+.buttons i{
+    font-size: 13px;
+    margin-right: 5px;
+}
+.active{
+    width: 100px;
+    height: 34px;
+    content: '';
+    transition: 0.5s ease;
+    position: absolute;
+    border-radius: 5px;
+    background-color: var(--smoke);
+}
+.inactive{
+    width: 100px;
+    height: 34px;
+    content: '';
+    color: #E3E2E390;
+    transition: 0.5s ease;
+    position: absolute;
+    border-radius: 5px;
+    background-color: transparent;
+}
+#onePlayer,#twoPlayer{
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+#twoPlayer{
+    margin-left: 100px;
+}
+.switch{
+    width: 200px;
+    position: relative;
+    display: inline-flex;
+    background-color: #E3E2E355;
+    height: 100%;
+    border-radius: 5px;
+    text-align: center;
+}
+.reset{
+    padding: 9px;
+    font-size: 14px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--smoke);
+    color: var(--white);
+    font-weight: bold;
+    letter-spacing: 0.9px;
+    cursor: pointer;
+}
+.info{
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    font-size: 15px;
+    padding: 6px;
+    border: 1.5px solid var(--white);
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.info-section{
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color:#49206195;
+    height: 100%;
+    z-index: 2;
+}
+.info-content{
+    width: 60%;
+    overflow:scroll;
+    background-color: var(--white);
+    color: var(--blue);
+    padding: 20px;
+    padding-left: 40px;
+    border: none;
+    border-radius: 5px;
+}
+.info-head{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+::-webkit-scrollbar{
+    width: 4px;
+}
+::-webkit-scrollbar-thumb{
+    width: 4px;
+    background-color: var(--blue);
+}
+.tips{
+    margin: 10px;
+}
+.info-content i{
+    float: right;
+    font-size: 18px;
+}
+
+
+@media (max-width:800px) {
+    h2{
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+    .game{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 15px;
+        column-gap: 15px;
+    }
+    .cell{
+        height: 50px;
+        width: 50px;
+        font-size: 40px;
+    }
+    .instructions{
+        width: 310px;
+    }
+    .buttons i{
+        font-size: 13px;
+        margin-right: 5px;
+    }
+}
+@media (max-width:430px) {
+    h2{
+        font-size: 30px;
+    }
+    .game{
+        gap: 15px;
+        column-gap: 15px;
+    }
+    .cell{
+        height: 45px;
+        width: 45px;
+        font-size: 35px;
+    }
+    .instructions{
+        width: 280px;
+        font-size: 15px;
+    }
+    .buttons i{
+        font-size: 11px;
+    }
+    .active{
+        width: 90px;
+        height: 30px;
+    }
+    .inactive{
+        width: 90px;
+        height: 30px;
+    }
+    #onePlayer,#twoPlayer{
+        font-size: 13px;
+    }
+    #twoPlayer{
+        margin-left: 90px;
+    }
+    .switch{
+        width: 180px;
+    }
+    .reset{
+        padding: 7.25px;
+        font-size: 13px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-left: 20px;
+    }
+    .info{
+        top: 20px;
+        left: 20px;
+        font-size: 12.5px;
+        height: 12px;
+        width: 12px;
+    }
+    .info-head{
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .info-content{
+        padding-left: 30px;
+        width: 80%;
+    }
+    .info-content ol{
+        font-size: 13px;
+    }
+    .tips{
+        font-size: 12.5px;
+    }
+}
+@media (max-width:170px) {
+    h2{
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+    .game{
+        gap: 3px;
+        column-gap: 3x;
+    }
+    .cell{
+        height: 18px;
+        width: 18px;
+        font-size: 15px;
+        padding: 2px;
+        border-radius: 2px;
+    }
+    .instructions{
+        width: 100px;
+        font-size: 6px;
+        padding: 1px;
+        margin-top: 5px;
+    }
+    .buttons i{
+        font-size: 5px;
+        margin-right: 2px;
+    }
+    .active{
+        width: 40px;
+        height: 13px;
+        border-radius: 2px;
+    }
+    .inactive{
+        width: 40px;
+        height: 13px;
+        border-radius: 2px;
+    }
+    #onePlayer,#twoPlayer{
+        font-size: 6px;
+    }
+    #twoPlayer{
+        margin-left: 40px;
+    }
+    .switch{
+        width: 80px;
+        border-radius: 2px;
+        margin: 0px;
+    }
+    .switch-button{
+        margin: 0px;
+        font-size: 6px;
+    }
+    .reset{
+        padding: 0px;
+        font-size: 6px;
+        height: 13px;
+        border-radius: 2px;
+        padding-right: 5px;
+        padding-left: 5px;
+        margin-left: 10px;
+    }
+    .buttons{
+        margin-top: 5px;
+        height: 13px;
+    }
+    .info{
+        top: 5px;
+        left: 5px;
+        font-size: 6px;
+        padding: 1px;
+        height: 12px;
+        width: 12px;
+        border: 0.5px solid var(--white);
+    }
+    .info-head{
+        font-size: 6px;
+        text-align: center;
+        margin-bottom: 1px;
+    }
+    .info-content{
+        padding: 10px;
+        width: 80%;
+    }
+    .info-content ol{
+        font-size: 3.75px;
+    }
+    .info-content i{
+        font-size: 6px;
+    }
+    .tips{
+        font-size: 3.9px;
+        margin: 1px;
+    }
+}
