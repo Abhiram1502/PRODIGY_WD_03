@@ -7,6 +7,7 @@ let reset = document.getElementById('reset');
 let info=document.getElementById('info');
 let close=document.getElementById('close');
 const cells=document.querySelectorAll('[data-cell]');
+let gameOver=false;
 onePlayer.addEventListener("click",function(){
     onePlayer.classList.add('active');
     onePlayer.classList.remove('inactive');
@@ -33,14 +34,21 @@ function startGame(){
     cells.forEach(cell => {
         cell.addEventListener("click",handleClick,{once:true});
     });
+    gameOver=false;
 };
-
 function handleClick(a){
     const cell=a.target;
     mark(cell,currentPlayer);
-    if(checkWin(currentPlayer) && currentPlayer!=' '){
+    if (gameOver){
+        cells.forEach(cell => {
+            cell.removeEventListener("click",handleClick,{once:true});
+        });
+        document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+        return;
+    } 
+    if(checkWin(currentPlayer)){
         document.getElementById('instruction').innerHTML= currentPlayer+' Won the game.';
-        currentPlayer=' ';
+        gameOver=true;
         console.log(currentPlayer+ "wins");
     }else if(checkDraw()){
         document.getElementById('instruction').innerHTML='This Game is draw.';
@@ -53,13 +61,6 @@ function handleClick(a){
         }else{
             document.getElementById('instruction').innerHTML=currentPlayer+' \'s Turn';
         }
-    }
-    if(currentPlayer===' '){
-        cells.forEach(cell => {
-            cell.addEventListener("click",function(){
-                document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
-            });
-        });
     }
 }
 
@@ -92,15 +93,15 @@ function checkDraw(){
 
 reset.addEventListener("click",resetGame);
 function resetGame(){
+    currentPlayer='X';
     cells.forEach(cell => {
         cell.textContent='';
     });
-    currentPlayer='X';
     document.getElementById("instruction").innerHTML='X \'s turn';
-    addEventListener('click',function() {
-        startGame();
-    });
+    gameOver=false;
+    startGame();
 }
+
 function computerMove(){
     let emptyCells = [];
 
@@ -115,9 +116,9 @@ function computerMove(){
 
     setTimeout(() => {
         mark(selectedCell, 'O');
-        if (checkWin('O') && currentPlayer!=' ') {
+        if (checkWin('O')) {
             document.getElementById('instruction').innerHTML= currentPlayer+' Won the game.';
-            currentPlayer=' ';
+            gameOver=true;
             console.log(currentPlayer+ "wins");
         } else if (checkDraw()) {
             document.getElementById('instruction').innerHTML='This Game is draw.';
@@ -126,13 +127,13 @@ function computerMove(){
             swapTurns();
             document.getElementById('instruction').innerHTML=currentPlayer+' \'s Turn';
         }
-        if(currentPlayer===' '){
+        if (gameOver){
             cells.forEach(cell => {
-                cell.addEventListener("click",function(){
-                    document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
-                });
+                cell.removeEventListener("click",handleClick,{once:true});
             });
-        }
+            document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+            return;
+        } 
     }, 500);
 };
 info.addEventListener("click",function(){
