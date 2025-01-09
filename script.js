@@ -39,13 +39,6 @@ function startGame(){
 function handleClick(a){
     const cell=a.target;
     mark(cell,currentPlayer);
-    if (gameOver){
-        cells.forEach(cell => {
-            cell.removeEventListener("click",handleClick,{once:true});
-        });
-        document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
-        return;
-    } 
     if(checkWin(currentPlayer)){
         document.getElementById('instruction').innerHTML= currentPlayer+' Won the game.';
         gameOver=true;
@@ -53,6 +46,9 @@ function handleClick(a){
     }else if(checkDraw()){
         document.getElementById('instruction').innerHTML='This Game is draw.';
         console.log("this game is draw");
+        setTimeout(() =>{
+            document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+        },2000);
     }else{
         swapTurns();
         if(gameMode==='1p' && currentPlayer==='O'){
@@ -62,6 +58,16 @@ function handleClick(a){
             document.getElementById('instruction').innerHTML=currentPlayer+' \'s Turn';
         }
     }
+    if (gameOver){
+        cells.forEach(cell => {
+            cell.removeEventListener("click",handleClick,{once:true});
+        });
+        setTimeout(() =>{
+            document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+        },1500);
+        return;
+    } 
+
 }
 
 function mark(cell,player){
@@ -123,6 +129,9 @@ function computerMove(){
         } else if (checkDraw()) {
             document.getElementById('instruction').innerHTML='This Game is draw.';
             console.log("this game is draw");
+            setTimeout(() =>{
+                document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+            },1500);
         } else {
             swapTurns();
             document.getElementById('instruction').innerHTML=currentPlayer+' \'s Turn';
@@ -131,9 +140,11 @@ function computerMove(){
             cells.forEach(cell => {
                 cell.removeEventListener("click",handleClick,{once:true});
             });
-            document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+            setTimeout(() =>{
+                document.getElementById('instruction').innerHTML='Click Reset to play the Game Again.';
+            },1500);
             return;
-        } 
+        }
     }, 500);
 };
 info.addEventListener("click",function(){
